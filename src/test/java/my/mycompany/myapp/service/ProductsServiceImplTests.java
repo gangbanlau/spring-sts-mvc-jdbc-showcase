@@ -5,7 +5,10 @@ import java.util.List;
 import junit.framework.Assert;
 
 import org.junit.Test;
+import org.junit.Ignore;
 import org.junit.runner.RunWith;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.dao.EmptyResultDataAccessException;
 import org.springframework.test.context.ContextConfiguration;
@@ -22,6 +25,8 @@ import my.mycompany.myapp.service.IProductsService;
 		"classpath*:datasource.xml" })
 public class ProductsServiceImplTests {
 
+	private static final Logger logger = LoggerFactory.getLogger(ProductsServiceImplTests.class);
+	
 	@Autowired
 	IProductsService productService;
 	
@@ -46,4 +51,11 @@ public class ProductsServiceImplTests {
 	public void testFindOneProductNotExists() {
 		productService.findOneProduct(1000L);
 	}
+	
+	@Ignore("Not Ready to Run")  
+	@Test
+	public void testdivisionWithException() {
+		logger.warn("Not Ready to Run");
+	}  
+ 	
 }
