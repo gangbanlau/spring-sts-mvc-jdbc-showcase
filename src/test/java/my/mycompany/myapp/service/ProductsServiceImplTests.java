@@ -53,7 +53,7 @@ public class ProductsServiceImplTests {
 	}
 	
 	@Ignore("Not Ready to Run")  
-	@Test
+	@Test(timeout = 1000)
 	public void testdivisionWithException() {
 		logger.warn("Not Ready to Run");
 	}  
