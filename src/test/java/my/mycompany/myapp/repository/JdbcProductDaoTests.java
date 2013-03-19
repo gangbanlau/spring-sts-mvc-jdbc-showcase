@@ -10,6 +10,7 @@ import org.junit.Before;
 import org.junit.BeforeClass;
 import org.junit.Test;
 import org.junit.runner.RunWith;
+import static org.junit.Assert.*;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.test.context.transaction.TransactionConfiguration;
@@ -83,12 +84,14 @@ public class JdbcProductDaoTests {
 	
 	@Test
 	public void testCount() {
-		Assert.assertEquals("wrong number of products?", 3, productDao.count());
+		//Assert.assertEquals("wrong number of products?", 3, productDao.count());
+		assertEquals(3, productDao.count());
 	}
 	
 	@Test
 	public void testExists() {
-		Assert.assertEquals("product not exists?", true, productDao.exists(1L));
+		//Assert.assertEquals("product not exists?", true, productDao.exists(1L));
+		assertTrue(productDao.exists(1L));
 	}
 	
 	@Test 
