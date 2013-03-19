@@ -42,17 +42,8 @@ public class ProductsServiceImplTests {
 				null != productService.findOneProduct(1L));		
 	}
 	
-	@Test
+	@Test(expected = EmptyResultDataAccessException.class)
 	public void testFindOneProductNotExists() {
-		boolean productNotFound = false;
-		
-		try {
-			productService.findOneProduct(1000L);
-		}
-		catch (EmptyResultDataAccessException e) {
-			productNotFound = true;
-		}
-		
-		Assert.assertEquals("product exists?", true, productNotFound);		
+		productService.findOneProduct(1000L);
 	}
 }
