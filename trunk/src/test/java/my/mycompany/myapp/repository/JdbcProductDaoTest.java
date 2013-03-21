@@ -32,9 +32,9 @@ import my.mycompany.myapp.repository.IProductDao;
 		"classpath*:datasource.xml" })
 @TransactionConfiguration
 @Transactional
-public class JdbcProductDaoTests {
+public class JdbcProductDaoTest {
 
-	private static final Logger logger = LoggerFactory.getLogger(JdbcProductDaoTests.class);
+	private static final Logger logger = LoggerFactory.getLogger(JdbcProductDaoTest.class);
 	
 	@Autowired
 	IProductDao productDao;

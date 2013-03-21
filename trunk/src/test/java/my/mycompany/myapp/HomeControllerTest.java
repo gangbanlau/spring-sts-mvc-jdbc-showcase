@@ -20,7 +20,7 @@ import org.springframework.web.context.WebApplicationContext;
 @WebAppConfiguration
 @ContextConfiguration(locations = { "classpath*:root-context.xml",
 		"classpath*:servlet-context.xml", "classpath*:datasource.xml" })
-public class HomeControllerTests {
+public class HomeControllerTest {
 
 	@Autowired
 	private WebApplicationContext wac;

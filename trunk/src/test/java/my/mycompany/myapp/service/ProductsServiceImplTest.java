@@ -23,9 +23,9 @@ import my.mycompany.myapp.service.IProductsService;
 @ContextConfiguration(locations = { "classpath*:root-context.xml",
 		"classpath*:servlet-context.xml",
 		"classpath*:datasource.xml" })
-public class ProductsServiceImplTests {
+public class ProductsServiceImplTest {
 
-	private static final Logger logger = LoggerFactory.getLogger(ProductsServiceImplTests.class);
+	private static final Logger logger = LoggerFactory.getLogger(ProductsServiceImplTest.class);
 	
 	@Autowired
 	IProductsService productService;
