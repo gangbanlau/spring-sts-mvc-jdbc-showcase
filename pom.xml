@@ -149,6 +149,12 @@
 			<groupId>cglib</groupId>
 			<artifactId>cglib</artifactId>
 			<version>2.2.2</version>
+		</dependency>
+		
+		<dependency>
+  			<groupId>org.apache.shiro</groupId>
+  			<artifactId>shiro-spring</artifactId>
+  			<version>1.2.1</version>
 		</dependency>		
 	</dependencies>
     <build>
