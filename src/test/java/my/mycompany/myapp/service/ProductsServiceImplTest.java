@@ -13,7 +13,9 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.dao.EmptyResultDataAccessException;
 import org.springframework.test.context.ContextConfiguration;
 import org.springframework.test.context.junit4.SpringJUnit4ClassRunner;
+import org.springframework.test.context.transaction.TransactionConfiguration;
 import org.springframework.test.context.web.WebAppConfiguration;
+import org.springframework.transaction.annotation.Transactional;
 
 import my.mycompany.myapp.domain.Product;
 import my.mycompany.myapp.service.IProductsService;
@@ -23,6 +25,8 @@ import my.mycompany.myapp.service.IProductsService;
 @ContextConfiguration(locations = { "classpath*:root-context.xml",
 		"classpath*:servlet-context.xml",
 		"classpath*:datasource.xml" })
+@TransactionConfiguration
+@Transactional
 public class ProductsServiceImplTest {
 
 	private static final Logger logger = LoggerFactory.getLogger(ProductsServiceImplTest.class);
