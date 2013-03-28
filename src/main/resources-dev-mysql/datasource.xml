@@ -4,11 +4,12 @@
 	xmlns:jdbc="http://www.springframework.org/schema/jdbc"
 	xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd
 		http://www.springframework.org/schema/jdbc http://www.springframework.org/schema/jdbc/spring-jdbc-3.0.xsd">
-
- <!-- Below configuration has been added to enable in memory DB HSQLDB  -->
- <jdbc:embedded-database id="dataSource" type="HSQL">
-	  <jdbc:script location="classpath:schema.sql"/>
-	  <jdbc:script location="classpath:test-data.sql"/>
- </jdbc:embedded-database>
- 
+	
+	<bean id="dataSource" class="org.springframework.jdbc.datasource.DriverManagerDataSource">
+		<property name="driverClassName" value="${jdbc.driverClassName}" />
+		<property name="url" value="${jdbc.url}" />
+		<property name="username" value="${jdbc.username}" />
+		<property name="password" value="${jdbc.password}" />
+	</bean>
+	
 </beans>
