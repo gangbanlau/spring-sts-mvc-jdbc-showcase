@@ -20,3 +20,61 @@
 	        	-->
 	      	</plugin>
   
+. Maven profiles and resources filtering
+	STS Project -> Properties -> Maven -> seletc dev-mysql or dev-hsql
+	
+  . define profiles at pom.xml
+    profile dev-hsql is for hsql db, this env specify resources is at 
+    	src/main/resources-dev-hsql
+    		datasource.xml
+    		schema.sql
+    		test-data.sql
+    profile dev-mysql is for mysql, this env specify resources is at
+    	src/main/resources-dev-mysql
+    		datasource.xml
+    		schema.sql
+    		test-data.sql
+    		
+	<profiles>
+        <profile>
+            <id>dev-mysql</id>
+            <properties>
+                <environment>dev-mysql</environment>
+                <database.driverClassName>com.mysql.jdbc.Driver</database.driverClassName>
+                <database.url>
+                    jdbc:mysql://localhost:3306/spring_mvc_showcase
+                </database.url>
+                <database.user>development_user</database.user>
+                <database.password>development_password</database.password>
+            </properties>
+        </profile>
+        <profile>
+            <id>dev-hsql</id>
+            <properties>
+            <environment>dev-hsql</environment>
+            </properties>
+        </profile>        
+    </profiles>
+
+ . config resource plugin
+		<plugin>
+ 				<groupId>org.apache.maven.plugins</groupId>
+ 				<artifactId>maven-resources-plugin</artifactId>
+ 				<version>2.4</version>
+ 				<configuration>
+   					<!-- specify UTF-8, ISO-8859-1 or any other file encoding -->
+   					<encoding>UTF-8</encoding>
+ 				</configuration>
+			</plugin>                 
+
+		<resources>
+ 			<resource>
+   				<directory>src/main/resources</directory>
+   				<filtering>true</filtering>
+ 			</resource>
+			<resource>
+   				<directory>src/main/resources-${environment}</directory>
+   				<filtering>true</filtering>
+ 			</resource> 
+		</resources>
+  
