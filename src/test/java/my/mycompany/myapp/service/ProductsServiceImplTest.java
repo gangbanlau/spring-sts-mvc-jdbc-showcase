@@ -22,7 +22,7 @@ import my.mycompany.myapp.service.IProductsService;
 
 @RunWith(SpringJUnit4ClassRunner.class)
 @WebAppConfiguration
-@ContextConfiguration(locations = { "classpath*:root-context.xml",
+@ContextConfiguration(locations = { "classpath*:web.xml","classpath*:root-context.xml",
 		"classpath*:servlet-context.xml",
 		"classpath*:datasource.xml" })
 @TransactionConfiguration

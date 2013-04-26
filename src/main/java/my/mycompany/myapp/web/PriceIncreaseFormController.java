@@ -2,6 +2,7 @@ package my.mycompany.myapp.web;
 
 import javax.validation.Valid;
 
+import org.apache.shiro.authz.annotation.RequiresPermissions;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -19,7 +20,7 @@ import my.mycompany.myapp.service.IProductsService;
 @Controller
 @RequestMapping("/inventory/priceincrease")
 @SessionAttributes("priceIncreaseFormBean")
-public class PriceIncreaseFormController {
+public class PriceIncreaseFormController implements IBaseController {
 
 	private static final Logger logger = LoggerFactory.getLogger(PriceIncreaseFormController.class);
 
@@ -36,6 +37,7 @@ public class PriceIncreaseFormController {
 		return fb;
 	}
 		
+	@RequiresPermissions( {"product:manage"} )
     @RequestMapping(method=RequestMethod.POST)
     public String onSubmit(@Valid PriceIncreaseFormBean priceIncreaseFormBean,
     		BindingResult result, SessionStatus sessionStatus) {
@@ -54,6 +56,7 @@ public class PriceIncreaseFormController {
         return "redirect:/inventory";
     }
 
+	@RequiresPermissions( {"product:manage"} )
     @RequestMapping(method=RequestMethod.GET)
     protected void form(ModelMap model) {
     }

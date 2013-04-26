@@ -15,5 +15,8 @@
     <br>
     <a href="<c:url value="/inventory/priceincrease"/>">Increase Prices</a>
     <br>
+    <br>
+    <a href="<c:url value="/logout"/>">Logout</a>
+    <br>    
   </body>
 </html>
