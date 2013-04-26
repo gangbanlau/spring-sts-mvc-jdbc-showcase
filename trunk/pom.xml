@@ -42,14 +42,27 @@
 			<artifactId>spring-test</artifactId>
 			<version>${org.springframework-version}</version>
 		</dependency>
-				
+		<!-- 
+		<dependency>
+			<groupId>org.springframework</groupId>
+			<artifactId>spring-aspects</artifactId>
+			<version>${org.springframework-version}</version>
+		</dependency>
+		 -->
+		 	
 		<!-- AspectJ -->
 		<dependency>
 			<groupId>org.aspectj</groupId>
 			<artifactId>aspectjrt</artifactId>
 			<version>${org.aspectj-version}</version>
-		</dependency>	
-		
+		</dependency>
+			
+		<dependency>
+    		<groupId>org.aspectj</groupId>
+    		<artifactId>aspectjweaver</artifactId>
+    		<version>${org.aspectj-version}</version>
+		</dependency> 
+		 
 		<!-- Logging -->
 		<dependency>
 			<groupId>org.slf4j</groupId>
@@ -219,7 +232,46 @@
                     <mainClass>org.test.int1.Main</mainClass>
                 </configuration>
             </plugin>
-            
+<!--            
+<plugin>
+    <groupId>org.codehaus.mojo</groupId>
+    <artifactId>aspectj-maven-plugin</artifactId>
+    <version>1.0</version>
+    <dependencies>
+        <dependency>
+            <groupId>org.aspectj</groupId>
+            <artifactId>aspectjrt</artifactId>
+            <version>1.6.10</version>
+        </dependency>
+        <dependency>
+            <groupId>org.aspectj</groupId>
+            <artifactId>aspectjtools</artifactId>
+            <version>1.6.10</version>
+        </dependency>
+    </dependencies>
+    <executions>
+        <execution>
+            <goals>
+                <goal>compile</goal>
+                <goal>test-compile</goal>
+            </goals>
+        </execution>
+    </executions>
+    <configuration>
+        <outxml>true</outxml>
+        <verbose>true</verbose>
+        <showWeaveInfo>true</showWeaveInfo>
+        <aspectLibraries>
+            <aspectLibrary>
+                <groupId>org.springframework</groupId>
+                <artifactId>spring-aspects</artifactId>
+            </aspectLibrary>
+        </aspectLibraries>
+        <source>1.6</source>
+        <target>1.6</target>
+    </configuration>
+</plugin>
+ -->            
 			<plugin>
  				<groupId>org.apache.maven.plugins</groupId>
  				<artifactId>maven-resources-plugin</artifactId>
