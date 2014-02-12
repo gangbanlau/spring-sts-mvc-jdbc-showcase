@@ -1,4 +1,4 @@
-package my.mycompany.myapp.service;
+package my.mycompany.myapp.service.impl;
 
 import java.util.List;
 
@@ -10,6 +10,7 @@ import org.springframework.transaction.annotation.Transactional;
 
 import my.mycompany.myapp.domain.Product;
 import my.mycompany.myapp.repository.IProductDao;
+import my.mycompany.myapp.service.IProductsService;
 
 @Service
 @Transactional

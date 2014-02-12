@@ -53,14 +53,8 @@ public class Product {
 		this.price = price;
 	}
 
+	@Override
 	public String toString() {
-		StringBuffer buffer = new StringBuffer();
-		buffer.append("ID: " + id + ";");
-		buffer.append("Name: " + name + ";");
-		buffer.append("Price: " + price + ";");
-		if (description != null)
-			buffer.append("Description: " + description);
-
-		return buffer.toString();
+		return String.format("Product[id=%d, name='%s', price=%f, description='%s']", id, name, price, description);		
 	}
 }

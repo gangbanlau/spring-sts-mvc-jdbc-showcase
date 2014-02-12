@@ -1,11 +1,11 @@
-package my.mycompany.myapp.service;
+package my.mycompany.myapp.service.impl;
 
 import my.mycompany.myapp.domain.User;
 import my.mycompany.myapp.repository.IUserDao;
+import my.mycompany.myapp.service.IUsersService;
 
 import org.apache.shiro.crypto.SecureRandomNumberGenerator;
 import org.apache.shiro.crypto.hash.Sha512Hash;
-
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
