@@ -61,10 +61,10 @@
 
 	<!-- Enable Shiro Annotations for Spring-configured beans.  Only run after -->
 	<!-- the lifecycleBeanProcessor has run: -->
-	<bean class="org.springframework.aop.framework.autoproxy.DefaultAdvisorAutoProxyCreator" depends-on="lifecycleBeanPostProcessor"/>
+<!-- 	<bean class="org.springframework.aop.framework.autoproxy.DefaultAdvisorAutoProxyCreator" depends-on="lifecycleBeanPostProcessor"/>
 	<bean class="org.apache.shiro.spring.security.interceptor.AuthorizationAttributeSourceAdvisor">
     	<property name="securityManager" ref="securityManager"/>
-	</bean>	
+	</bean>	 -->
 
 	<bean id="sha512Matcher" class="org.apache.shiro.authc.credential.HashedCredentialsMatcher">
 		<!-- Modifying any piece of the matcher will likely invalidate the ability to match any passphrases in the DB -->

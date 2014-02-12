@@ -1,10 +1,11 @@
-package my.mycompany.myapp.repository;
+package my.mycompany.myapp.repository.impl;
 
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.util.List;
 import java.util.Map;
 import java.util.HashMap;
+
 import javax.sql.DataSource;
 
 import org.slf4j.Logger;
@@ -16,6 +17,7 @@ import org.springframework.jdbc.core.support.JdbcDaoSupport;
 import org.springframework.stereotype.Repository;
 
 import my.mycompany.myapp.domain.Product;
+import my.mycompany.myapp.repository.IProductDao;
 
 @Repository("IProductDao")
 // @Datasource("dataSource")

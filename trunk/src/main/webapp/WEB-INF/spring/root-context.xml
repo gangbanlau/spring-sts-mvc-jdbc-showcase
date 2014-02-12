@@ -1,32 +1,18 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <beans xmlns="http://www.springframework.org/schema/beans"
-xmlns:tx="http://www.springframework.org/schema/tx"
-xmlns:context="http://www.springframework.org/schema/context"
 	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xmlns:context="http://www.springframework.org/schema/context"
 	xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd
-	http://www.springframework.org/schema/tx 
-    http://www.springframework.org/schema/tx/spring-tx.xsd
-    http://www.springframework.org/schema/context http://www.springframework.org/schema/context/spring-context.xsd"	
-	>
+	http://www.springframework.org/schema/context http://www.springframework.org/schema/context/spring-context.xsd">
 	
 	<!-- Root Context: defines shared resources visible to all other web components -->
-
 	<context:property-placeholder location="classpath:project.properties"/>
-
-	<!-- enable autowire 
-	<context:annotation-config />
-	-->
 	
-	<!-- enable the configuration of transactional behavior based on annotations -->
-	<tx:annotation-driven/>
-
-	<!-- a PlatformTransactionManager is still required -->
-	<bean id="transactionManager"
-		class="org.springframework.jdbc.datasource.DataSourceTransactionManager">
-		<!-- (this dependency is defined somewhere else) -->
-		<property name="dataSource" ref="dataSource" />
-	</bean>
-		
+	<import resource="classpath*:datasource.xml"/>
+	
+	<import resource="locale-context.xml"/>	
+	
 	<!-- Security Configuration / Apache Shiro -->
-	<import resource="shiro-context.xml" />		
+    <import resource="shiro-context.xml"/>
+	
 </beans>

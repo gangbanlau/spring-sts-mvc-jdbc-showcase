@@ -1,4 +1,4 @@
-package my.mycompany.myapp.repository;
+package my.mycompany.myapp.repository.impl;
 
 import java.util.HashMap;
 import java.util.List;
@@ -7,6 +7,7 @@ import java.util.Map;
 import javax.sql.DataSource;
 
 import my.mycompany.myapp.domain.User;
+import my.mycompany.myapp.repository.IUserDao;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.jdbc.core.simple.SimpleJdbcInsert;
