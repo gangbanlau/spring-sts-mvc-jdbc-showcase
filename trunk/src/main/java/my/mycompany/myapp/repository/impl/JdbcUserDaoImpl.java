@@ -9,23 +9,24 @@ import javax.sql.DataSource;
 import my.mycompany.myapp.domain.User;
 import my.mycompany.myapp.repository.IUserDao;
 
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.jdbc.core.JdbcTemplate;
 import org.springframework.jdbc.core.simple.SimpleJdbcInsert;
-import org.springframework.jdbc.core.support.JdbcDaoSupport;
 import org.springframework.stereotype.Repository;
 
 @Repository
-public class JdbcUserDao extends JdbcDaoSupport implements IUserDao {
-
+public class JdbcUserDaoImpl implements IUserDao {
+	private static final Logger logger = LoggerFactory.getLogger(JdbcUserDaoImpl.class);
+	
+	private JdbcTemplate jdbcTemplate;
 	private SimpleJdbcInsert insertProduct;
 	
 	@Autowired
-	JdbcUserDao(DataSource dataSource) {
-		setDataSource(dataSource);
-		insertProduct =
-	                new SimpleJdbcInsert(dataSource)
-	                        .withTableName("users")
-	                        .usingGeneratedKeyColumns("id");		
+	private void setDataSource(DataSource dataSource) {
+		this.jdbcTemplate = new JdbcTemplate(dataSource);
+		this.insertProduct = new SimpleJdbcInsert(dataSource).withTableName("users").usingGeneratedKeyColumns("id");		
 	}
 	
 	@Override
@@ -54,17 +55,17 @@ public class JdbcUserDao extends JdbcDaoSupport implements IUserDao {
 
 	@Override
 	public User insert(User entity) {
-		 Map<String, Object> parameters = new HashMap<String, Object>(6);
-	        parameters.put("userid", entity.getUserId());	      
-	        parameters.put("email", entity.getEmail());
-	        parameters.put("description", entity.getDescription());
-	        parameters.put("passphrase", entity.getPassphrase());
-	        parameters.put("salt", entity.getSalt());
-	        parameters.put("passphrase", entity.getPassphrase());
-	        parameters.put("date_created", entity.getCreatedDate());
-	        
-	        Number newId = insertProduct.executeAndReturnKey(parameters);
-	        entity.setId(newId.longValue());				
+		Map<String, Object> parameters = new HashMap<String, Object>(6);
+        parameters.put("userid", entity.getUserId());	      
+        parameters.put("email", entity.getEmail());
+        parameters.put("description", entity.getDescription());
+        parameters.put("passphrase", entity.getPassphrase());
+        parameters.put("salt", entity.getSalt());
+        parameters.put("passphrase", entity.getPassphrase());
+        parameters.put("date_created", entity.getCreatedDate());
+        
+        Number newId = insertProduct.executeAndReturnKey(parameters);
+        entity.setId(newId.longValue());				
 		return entity;
 	}
 
