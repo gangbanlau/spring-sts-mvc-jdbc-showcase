@@ -2,7 +2,6 @@ package my.mycompany.myapp.web;
 
 import javax.validation.Valid;
 
-import my.mycompany.myapp.domain.User;
 import my.mycompany.myapp.service.IUsersService;
 
 import org.apache.shiro.SecurityUtils;
@@ -22,7 +21,6 @@ import org.springframework.web.bind.support.SessionStatus;
 
 @Controller
 public class LoginController implements IBaseController {
-
 	private static final Logger logger = LoggerFactory.getLogger(LoginController.class);
 
 	@Autowired
