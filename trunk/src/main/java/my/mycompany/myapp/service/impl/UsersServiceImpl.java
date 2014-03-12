@@ -14,38 +14,37 @@ import org.springframework.core.env.Environment;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
-@Service
 @PropertySource("classpath:project.properties")
 @Transactional
+@Service
 public class UsersServiceImpl implements IUsersService {
-
 	private static final Logger logger = LoggerFactory.getLogger(UsersServiceImpl.class);
-	
+
 	private SecureRandomNumberGenerator srGen = new SecureRandomNumberGenerator();
-	
+
 	@Autowired
-    IUserDao userDao;
-	
+	IUserDao userDao;
+
 	@Autowired
 	Environment env;
-	
+
 	public User insertUser(User newUser, String password) {
 		newUser.setSalt(getSalt());
 		newUser.setPassphrase(encodePassphrase(password, newUser.getSalt()));
-		
+
 		return userDao.insert(newUser);
 	}
-	
+
 	protected String getSalt() {
-		    return srGen.nextBytes().toBase64();
+		return srGen.nextBytes().toBase64();
 	}
 
 	protected String getApplicationSalt() {
-			return env.getProperty("shiro.applicationSalt");
+		return env.getProperty("shiro.applicationSalt");
 	}
-	
+
 	protected String getCombinedSalt(String salt) {
-		    return env.getProperty("shiro.applicationSalt") + ":" + salt;
+		return env.getProperty("shiro.applicationSalt") + ":" + salt;
 	}
 
 	protected String encodePassphrase(String rawPassphrase, String salt) {
@@ -53,6 +52,6 @@ public class UsersServiceImpl implements IUsersService {
 	}
 
 	protected Integer getIterations() {
-		    return Integer.parseInt(env.getProperty("shiro.hashIterations"));
-	}	
+		return Integer.parseInt(env.getProperty("shiro.hashIterations"));
+	}
 }

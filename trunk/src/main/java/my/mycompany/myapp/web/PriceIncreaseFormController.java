@@ -2,20 +2,19 @@ package my.mycompany.myapp.web;
 
 import javax.validation.Valid;
 
-import org.apache.shiro.authz.annotation.RequiresPermissions;
+import my.mycompany.myapp.service.IProductsService;
+
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.ModelMap;
 import org.springframework.validation.BindingResult;
+import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.SessionAttributes;
-import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.support.SessionStatus;
-
-import my.mycompany.myapp.service.IProductsService;
 
 @Controller
 @RequestMapping("/inventory/priceincrease")
@@ -37,7 +36,6 @@ public class PriceIncreaseFormController implements IBaseController {
 		return fb;
 	}
 		
-	@RequiresPermissions( {"product:manage"} )
     @RequestMapping(method=RequestMethod.POST)
     public String onSubmit(@Valid PriceIncreaseFormBean priceIncreaseFormBean,
     		BindingResult result, SessionStatus sessionStatus) {
@@ -56,7 +54,6 @@ public class PriceIncreaseFormController implements IBaseController {
         return "redirect:/inventory";
     }
 
-	@RequiresPermissions( {"product:manage"} )
     @RequestMapping(method=RequestMethod.GET)
     protected void form(ModelMap model) {
     }
