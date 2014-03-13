@@ -18,7 +18,7 @@ public class ScheduledJob implements IScheduledJob {
 	 @Autowired
 	 private IProductDao productDao;
 
-	    @Scheduled(cron = "0 0 0  ? * 7")
+	    @Scheduled(cron = "0 0 0  ? * SAT")
 	    @Override
 	    public void RunPreferentialPrice() {
 	      logger.info("Execute RunPreferentialPrice!");
@@ -35,7 +35,7 @@ public class ScheduledJob implements IScheduledJob {
 	    
 	    }
 
-	    @Scheduled(cron = "0 0 0 ? * 2")
+	    @Scheduled(cron = "0 0 0 ? * MON")
 	    @Override
 	    public void RestorePrice() {
 	      logger.info("Execute RestorePrice!");
