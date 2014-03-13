@@ -21,11 +21,25 @@ public class InventoryController implements IBaseController {
 
 	@RequestMapping(value = "/inventory", method = RequestMethod.GET)
 	public String inventory(Locale locale, Model model) {
+		logger.info("Execute inventory!");
+		
 		String now = (new java.util.Date()).toString();
 		
 		model.addAttribute("now", now);
 		model.addAttribute("products", productsService.findAllProducts());
 
 		return "inventory/products";
+	}
+	
+	@RequestMapping(value = "/inventory_easyui", method = RequestMethod.GET)
+	public String inventoryEasyUI(Locale locale, Model model) {
+		logger.info("Execute inventoryEasyUI!");
+		
+		String now = (new java.util.Date()).toString();
+		
+		model.addAttribute("now", now);
+		model.addAttribute("products", productsService.findAllProducts());
+
+		return "inventory/products_easyui";
 	}
 }

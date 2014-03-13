@@ -57,7 +57,8 @@ public class LoginController implements IBaseController {
           return null;
         }
         
-        return "redirect:/inventory";
+//        return "redirect:/inventory";
+        return "redirect:/main";
     }
     
     @RequestMapping(value="/login", method=RequestMethod.GET)
