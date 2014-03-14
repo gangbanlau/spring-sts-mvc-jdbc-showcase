@@ -35,7 +35,7 @@ public class LoginController implements IBaseController {
 		return fb;
 	}
 		
-    @RequestMapping(method=RequestMethod.POST)
+    @RequestMapping(value="/login",method=RequestMethod.POST)
     public String onSubmit(@Valid LoginFormBean loginFormBean,
     		BindingResult result, SessionStatus sessionStatus) {
 
