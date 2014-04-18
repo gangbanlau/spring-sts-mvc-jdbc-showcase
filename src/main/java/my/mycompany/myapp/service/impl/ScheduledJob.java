@@ -30,7 +30,7 @@ public class ScheduledJob implements IScheduledJob {
 					productDao.update(product);
 				}
 			} else {
-				logger.warn("no product to increase price");
+				logger.warn("no product to decrease price");
 			}
 	    
 	    }
